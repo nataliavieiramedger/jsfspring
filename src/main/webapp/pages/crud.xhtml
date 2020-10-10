@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet library="css" name="primeflex.css" />
+</h:head>
+
+
+<h:body>
+
+	<h:form>
+		<div id="centralizar" class="ui-fluid">
+
+			<p:panelGrid columns="2" layout="grid"
+				styleClass="ui-panelgrid-blank ui-fluid">
+				<p:commandButton value="Adicionar Notícia"
+					action="/pages/adicionarNoticia.xhtml" class="botao" />
+				<p:commandButton value="Editar ou Excluir Notícias"
+					action="/pages/manutencao.xhtml" class="botao" />
+			</p:panelGrid>
+		</div>
+	</h:form>
+
+</h:body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:panelGrid class="ui-fluid">
+			<div>
+				<h:commandButton action="/pages/index.xhtml" value="Voltar" />
+			</div>
+		</h:panelGrid>
+	</h:form>
+
+	<h:form id="frm">
+		<div class="ui-fluid">
+			<p:growl id="msgs" showDetail="true" />
+			<p:panel>
+				<p:dataTable var="noticia"
+					emptyMessage="Nennhuma noticia registrada"
+					value="#{noticiaBean.noticias}" paginator="true">
+
+					<p:column headerText="Data Criação">
+						<h:outputText value="#{noticia.dataCriacao}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Título">
+						<h:outputText value="#{noticia.titulo}" />
+						
+					</p:column>
+
+					<p:column headerText="Noticia">
+						<h:outputText value="#{noticia.noticia}" />
+						
+					</p:column>
+
+					<p:column headerText="Autor">
+						<h:outputText value="#{noticia.autor}" />
+						
+					</p:column>
+
+					<p:column headerText="Data Atualização">
+						<h:outputText value="#{noticia.dataAtualizacao}" />
+						
+					</p:column>
+
+
+				</p:dataTable>
+			</p:panel>
+		</div>
+	</h:form>
+</h:body>
+</html>

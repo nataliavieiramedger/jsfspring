@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:panelGrid>
+			<div>
+				<h:commandButton action="/pages/index.xhtml" value="Voltar" />
+			</div>
+		</h:panelGrid>
+	</h:form>
+
+	<h:form id="frm">
+		<div class="ui-fluid">
+			<p:growl id="msgs" showDetail="true" />
+			<p:panel>
+				<p:dataTable var="noticia"
+					emptyMessage="Nennhuma noticia registrada"
+					value="#{noticiaBean.noticias}" paginator="true">
+
+					<p:column headerText="Data Criação">
+						<h:outputText value="#{noticia.dataCriacao}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Título">
+						<h:outputText value="#{noticia.titulo}" />
+						
+					</p:column>
+
+					<p:column headerText="Noticia">
+
+						<h:outputText value="#{noticia.noticia}" />
+
+					</p:column>
+
+					<p:column headerText="Autor">
+
+
+						<h:outputText value="#{noticia.autor}" />
+
+						
+
+
+					</p:column>
+
+					<p:column headerText="Data Atualização">
+
+
+						<h:outputText value="#{noticia.dataAtualizacao}" />
+
+
+						
+					</p:column>
+
+					<p:column headerText="Opções">
+
+						<p:commandButton icon="ui-icon-trash"
+							action="#{noticiaBean.excluir(noticia)}" update="frm">
+							<p:confirm header="Confirmação" message="Confirma a exclusão?"
+								icon="ui-icon-alert" />
+						</p:commandButton>
+
+						<p:commandButton icon="ui-icon-pencil"
+							action="#{noticiaBean.editar(noticia)}" update="frm"
+							oncomplete="PF('dialogo').show();">
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-close" />
+				</p:confirmDialog>
+			</p:panel>
+		</div>
+	</h:form>
+	
+<h:form>
+<p:panel>
+	<p:dialog header="Edição Noticias" widgetVar="dialogo" modal="true">
+		<h:form id="formEdicao">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Noticia:" />
+				<p:inputTextarea maxlength="100" size="80"
+					value="#{noticiaBean.noticiaDTO.noticia}" />
+					<p:commandButton value="Salvar" action="#{noticiaBean.editar}"/>
+			</h:panelGrid>
+			
+		</h:form>
+		
+	</p:dialog>
+	</p:panel>
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="pi pi-close" />
+				</p:confirmDialog>
+	</h:form>
+</h:body>
+</html>
